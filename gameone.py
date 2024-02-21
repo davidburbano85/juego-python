@@ -1,43 +1,14 @@
 import pygame
 import sys
-import random
-
-
+from funciones import *
 
 #ventana
-ancho=800
-alto=600
-negro=(0,0,0)
 ventana=pygame.display.set_mode((ancho, alto))
 game_over=False
 tiempo=pygame.time.Clock()
 
 
 
-#jugador
-tamano_jugador=50
-posicion_jugador=[ancho/2,alto-tamano_jugador*2]
-color_jugador=(255,0,0)
-
-
-#enemigos
-tamano_enemigo=50
-posicion_enemigo=[random.randint(0,ancho-tamano_enemigo),0]
-color_enemigo=(0,0,255)
-
-#funciones
-def detecta_colision(posicion_jugador, posicion_enemigo):
-    jugador_en_x=posicion_jugador[0]
-    jugador_en_y=posicion_jugador[1]
-    enemigo_x=posicion_enemigo[0]
-    enemigo_y=posicion_enemigo[1]
-
-    if(enemigo_x>=jugador_en_x and enemigo_x < (jugador_en_x + tamano_jugador)) or (jugador_en_x >= enemigo_x and jugador_en_x < (enemigo_x + tamano_enemigo)):
-        if(enemigo_y >= jugador_en_y and enemigo_y < (jugador_en_y + tamano_jugador)) or(jugador_en_y >= enemigo_x and jugador_en_y<(enemigo_y + tamano_jugador)):
-            return True
-    return False
-
-       
 
 while not game_over:
     for event in pygame.event.get():
